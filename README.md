@@ -1,4 +1,4 @@
-# FoodWorld
+# Food-Cart
 
 ## Getting Started
 
@@ -6,10 +6,6 @@
 
 ```
 $ git clone https://github.com/ashish-pushp/Food-Cart.git
-```
-
-```
-or in project folder install below dependencies.
 ```
 
 Install dependencies.
@@ -21,7 +17,7 @@ $ npm install
 _____ 
 
 
-Running **FoodWorld** on the Simulator.
+Running **Food-Cart**.
 ```
 $ react-native run-android or react-native run-ios
 ```
