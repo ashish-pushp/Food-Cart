@@ -8,10 +8,16 @@ import {
   TouchableOpacity,
   FlatList,
   TextInput,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  StatusBar
 } from "react-native";
 
 import { Col, Row, Grid } from "react-native-easy-grid";
+import Navbar from "../Components/navbar";
+
+const leftImage = require("../assests/images/back.png");
+const rightImage = require("../assests/images/cart.png");
+
 onPressAddToCart = () => {
   this.props.navigation.navigate("Payment");
 };
@@ -31,66 +37,14 @@ export default class Address extends Component {
   render() {
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.mainDiv} enabled>
-        <View
-          style={{
-            backgroundColor: "#10D731",
-            height: 60,
-            flexDirection: "row"
-          }}
-        >
-          <Grid>
-            <Col
-              style={{
-                backgroundColor: "transparent",
-                justifyContent: "center"
-              }}
-            >
-              <TouchableOpacity
-                style={{ left: 10 }}
-                onPress={() => this.props.navigation.goBack()}
-              >
-                <Image
-                  source={require("../assests/images/back.png")}
-                  style={{ width: 27, height: 27 }}
-                />
-              </TouchableOpacity>
-            </Col>
-            <Col
-              style={{
-                backgroundColor: "transparent",
-                justifyContent: "center"
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 21,
-                  color: "white",
-                  fontFamily: "Roboto-Bold",
-                  left: 15
-                }}
-              >
-                Your Order
-              </Text>
-            </Col>
-            <Col
-              style={{
-                backgroundColor: "transparent",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
-              <TouchableOpacity
-                style={{ left: 25 }}
-                onPress={() => this.props.navigation.navigate("Order")}
-              >
-                <Image
-                  source={require("../assests/images/cart.png")}
-                  style={{ width: 27, height: 27 }}
-                />
-              </TouchableOpacity>
-            </Col>
-          </Grid>
-        </View>
+        <StatusBar barStyle="light-content" backgroundColor="#10D731" />
+        <Navbar
+          leftImage={leftImage}
+          title="Delivery Details"
+          rightImage={rightImage}
+          rightImageClicked={() => this.props.navigation.navigate("order")}
+          leftImageClicked={() => this.props.navigation.goBack()}
+        />
         <View
           style={{
             alignItems: "center",

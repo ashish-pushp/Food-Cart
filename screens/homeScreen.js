@@ -5,9 +5,14 @@ import {
   Image,
   StyleSheet,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from "react-native";
 import { Col, Row, Grid } from "react-native-easy-grid";
+import Navbar from "../Components/navbar";
+
+const leftImage = require("../assests/images/back.png");
+const rightImage = require("../assests/images/cart.png");
 
 export default class Home extends Component {
   static navigationOptions = {
@@ -31,58 +36,8 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.mainDiv}>
-        <View
-          style={{
-            backgroundColor: "#10D731",
-            height: 60,
-            flexDirection: "row"
-          }}
-        >
-          <Grid>
-            <Col
-              style={{
-                backgroundColor: "transparent",
-                justifyContent: "center"
-              }}
-            >
-              <TouchableOpacity
-                style={{ left: 10 }}
-                onPress={() => this.props.navigation.goBack()}
-              >
-                <Image
-                  source={require("../assests/images/back.png")}
-                  style={{ width: 27, height: 27 }}
-                />
-              </TouchableOpacity>
-            </Col>
-            <Col
-              style={{
-                backgroundColor: "transparent",
-                justifyContent: "center"
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 21,
-                  color: "white",
-                  fontFamily: "Roboto-Bold",
-                  left: 45
-                }}
-              >
-                Home
-              </Text>
-            </Col>
-            <Col
-              style={{
-                backgroundColor: "transparent",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
-              <TouchableOpacity style={{ left: 25 }} />
-            </Col>
-          </Grid>
-        </View>
+        <StatusBar barStyle="light-content" backgroundColor="#10D731" />
+        <Navbar leftImage={leftImage} title="Home" />
         <View style={styles.foodImageSection}>
           <Image
             source={require("../assests/images/burger.png")}

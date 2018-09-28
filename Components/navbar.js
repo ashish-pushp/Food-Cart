@@ -8,24 +8,31 @@ import {
   TouchableOpacity
 } from "react-native";
 import { Col, Row, Grid } from "react-native-easy-grid";
-
+import PropTypes from "prop-types";
 class Navbar extends Component {
   state = {};
   render() {
     return (
-      <View style={styles.mainDiv}>
+      <View
+        style={{
+          backgroundColor: "#10D731",
+          height: 60,
+          flexDirection: "row"
+        }}
+      >
         <Grid>
           <Col
             style={{
+              backgroundColor: "transparent",
               justifyContent: "center"
             }}
           >
             <TouchableOpacity
               style={{ left: 10 }}
-              onPress={() => this.props.navigation.goBack()}
+              onPress={this.props.leftImageClicked}
             >
               <Image
-                source={require("../assests/images/back.png")}
+                source={this.props.leftImage}
                 style={{ width: 27, height: 27 }}
               />
             </TouchableOpacity>
@@ -33,18 +40,19 @@ class Navbar extends Component {
           <Col
             style={{
               backgroundColor: "transparent",
-              justifyContent: "center"
+              justifyContent: "center",
+              alignItems: "center",
+              width: this.props.titleWidth
             }}
           >
             <Text
               style={{
                 fontSize: 21,
                 color: "white",
-                fontFamily: "Roboto-Bold",
-                left: 15
+                fontFamily: "Roboto-Bold"
               }}
             >
-              Your Order
+              {this.props.title}
             </Text>
           </Col>
           <Col
@@ -54,9 +62,12 @@ class Navbar extends Component {
               alignItems: "center"
             }}
           >
-            <TouchableOpacity style={{ left: 25 }}>
+            <TouchableOpacity
+              style={{ left: 25 }}
+              onPress={this.props.rightImageClicked}
+            >
               <Image
-                source={require("../assests/images/cart.png")}
+                source={this.props.rightImage}
                 style={{ width: 27, height: 27 }}
               />
             </TouchableOpacity>
@@ -68,6 +79,16 @@ class Navbar extends Component {
 }
 
 export default Navbar;
+
+Navbar.propTypes = {
+  leftImageClicked: PropTypes.func.isRequired,
+  rightImageClicked: PropTypes.func.isRequired,
+  leftImage: PropTypes.string.isRequired,
+  rightImage: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  titleWidth: PropTypes.number.isRequired,
+  titleLeft: PropTypes.number.isRequired
+};
 
 const styles = StyleSheet.create({
   mainDiv: {
